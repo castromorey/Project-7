@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `Post` MODIFY `body` VARCHAR(191) NULL,
+    MODIFY `image` VARCHAR(191) NULL;

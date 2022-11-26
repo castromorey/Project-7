@@ -1,0 +1,7 @@
+api/node_modules/
+api/uploads/
+api/.env
+frontend/node_modules/v
+images/
+logos/
+.docker-compose
