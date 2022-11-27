@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export const signup = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, firstName, lastName } = req.body;
 
   try {
     if (!email || !password) throw Error("Not email and/or password provided");
@@ -20,8 +20,9 @@ export const signup = async (req, res) => {
       data: {
         email,
         password: hash,
+
         profile: {
-          create: { bio: "I like turtles" },
+          create: { bio: "I like turtles", firstName, lastName },
         },
       },
     });

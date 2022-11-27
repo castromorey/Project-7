@@ -16,7 +16,7 @@ const Post = ({ submit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!content || !image) {
+    if (!content && !image) {
       console.log({ content, image });
 
       return;
@@ -31,7 +31,7 @@ const Post = ({ submit }) => {
   };
 
   return (
-    <div className="border">
+    <div className="border ">
       {image && (
         <div className="relative">
           <img

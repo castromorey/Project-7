@@ -39,8 +39,9 @@ export const Header = () => {
               </li>
             </>
           ) : (
-            <li>
-              <button onClick={handleLogout}>Sign Out</button>
+            <li className="flex flex-col">
+              hello, {user.firstName} {user.lastName}
+              <button onClick={handleLogout}>Sign Out </button>
             </li>
           )}
         </ul>

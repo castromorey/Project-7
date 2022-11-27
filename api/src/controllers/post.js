@@ -10,7 +10,7 @@ export const create = async (req, res) => {
       //create a post
       data: {
         body: content,
-        image: req.file.filename,
+        image: req.file?.filename,
         user: {
           connect: { id: req.user.userId },
         },

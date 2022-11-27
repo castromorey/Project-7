@@ -5,6 +5,8 @@ const validate = (data) => {
 
   if (!data.email) errors.email = "Must enter your email";
   if (!data.password) errors.password = "Must enter your password";
+  if (!data.firstName) errors.firstName = "Must enter your first name";
+  if (!data.lastName) errors.lastName = "Must enter your last name";
 
   return errors;
 };
@@ -37,6 +39,35 @@ const SignUp = ({ submit }) => {
       <div className=" flex justify-center text-3xl text-white">
         <h2>Sign up</h2>
       </div>
+
+      <label htmlFor="firstName">
+        First Name*
+        <input
+          type="firstName"
+          name="firstName"
+          onChange={handleChange}
+          placeholder="Louis"
+          className="w-full border-0 rounded-md p-1"
+        />
+        {formErrors.email && (
+          <div className="text-red-500">{formErrors.email}</div>
+        )}
+      </label>
+
+      <label htmlFor="lastName">
+        Last Name*
+        <input
+          type="lastName"
+          name="lastName"
+          onChange={handleChange}
+          placeholder="Hamilton"
+          className="w-full border-0 rounded-md p-1"
+        />
+        {formErrors.email && (
+          <div className="text-red-500">{formErrors.email}</div>
+        )}
+      </label>
+
       <label htmlFor="e-mail">
         E-mail*
         <input
@@ -64,6 +95,7 @@ const SignUp = ({ submit }) => {
           <div className="text-red-500">{formErrors.password}</div>
         )}
       </label>
+
       <button className=" w-full border-0 rounded-md p-1 bg-blue-300">
         Create new account
       </button>
