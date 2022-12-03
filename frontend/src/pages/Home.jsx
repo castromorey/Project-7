@@ -72,7 +72,7 @@ export const Home = () => {
             return p;
           }
         });
-      }); //add post ti the list
+      }); //add post to the list
       console.log(res);
 
       return true;

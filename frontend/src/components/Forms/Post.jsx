@@ -69,10 +69,8 @@ const Post = ({ submit }) => {
           <button onClick={filePicker} className=" p-2">
             <i class="fa-regular fa-image"></i>
           </button>
-          <div>
-            <i class="fa-regular fa-face-smile"></i>
-          </div>
-          <button className="bg-blue-500 p-2 block text-white w-full">
+
+          <button className="bg-blue-500 p-2 block text-white w-full border-spacing-1">
             Post
           </button>
         </div>

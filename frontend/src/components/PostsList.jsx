@@ -24,9 +24,13 @@ const PostsList = ({ posts, submitComment, submitLike }) => {
       {posts.length === 0
         ? "No posts yet..."
         : posts.map((p) => (
-            <div className="border max-h-13 mb-4">
+            <div className="border max-h-13 mb-4 border-red-800 rounded-lg">
               {p.image && (
-                <img src={UPLOADS_ROOT + p.image} alt="" className="w-full" />
+                <img
+                  src={UPLOADS_ROOT + p.image}
+                  alt=""
+                  className="min-w-min"
+                />
               )}
               <p className="p-5">{p.body}</p>
               <div className="flex p-2 gap-16 ">
@@ -38,6 +42,10 @@ const PostsList = ({ posts, submitComment, submitLike }) => {
                 >
                   <i class="fa-solid fa-reply"></i>
                 </button>
+
+                <button onClick={() => {}}>
+                  <i class="fa-sharp fa-solid fa-trash-can text-red-600"></i>
+                </button>
               </div>
               {comment.postId === p.id && (
                 <form onSubmit={handleComment} className="relative">
@@ -48,7 +56,7 @@ const PostsList = ({ posts, submitComment, submitLike }) => {
                     cols="30"
                     rows="2"
                     value={comment.message}
-                    placeholder="Add your comment..."
+                    placeholder="Replay comment..."
                     className="w-full p-5"
                   />
                   <button

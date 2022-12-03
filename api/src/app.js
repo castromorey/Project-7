@@ -35,11 +35,6 @@ app.get("/", authMiddleware, (req, res) =>
 app.post("/users/signup", userCtrl.signup);
 app.post("/users/signin", userCtrl.signin);
 
-// Añadiendo ruta
-//app.post("users/:id/like", userCtrl.post);
-
-// finde la ruta
-
 app.get("/users/me", authMiddleware, userCtrl.me);
 
 app.get("/profile", async (req, res) => {
