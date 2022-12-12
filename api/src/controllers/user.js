@@ -39,6 +39,7 @@ export const signin = async (req, res) => {
 
   try {
     if (!email || !password) throw Error("Not email and/or password provided");
+    //if (exists) throw Error("User not found");
 
     const user = await prisma.user.findUnique({
       where: { email },

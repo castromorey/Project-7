@@ -1,4 +1,4 @@
-//import React, { useContext } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context";
@@ -8,7 +8,7 @@ import { Layout } from "../components/Layout";
 export const Profile = () => {
   const { user, setUser } = useContext(UserContext);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const deleteUser = async () => {
     alert("Do you really want to delete your account?");
