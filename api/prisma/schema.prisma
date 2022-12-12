@@ -28,19 +28,20 @@ model Profile {
   firstName String?
   lastName  String?
 
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Post {
-  id    Int     @id @default(autoincrement())
-  body  String?
-  image String?
+  id        Int      @id @default(autoincrement())
+  body      String?
+  image     String?
+  createdAt DateTime @default(now())
 
   userId Int
 
   comments Comment[]
   likes    Like[]
-  user     User      @relation(fields: [userId], references: [id])
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Comment {

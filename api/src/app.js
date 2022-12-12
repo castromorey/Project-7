@@ -35,6 +35,7 @@ app.get("/", authMiddleware, (req, res) =>
 app.post("/users/signup", userCtrl.signup);
 app.post("/users/signin", userCtrl.signin);
 
+app.delete("/users", authMiddleware, userCtrl.remove);
 app.get("/users/me", authMiddleware, userCtrl.me);
 
 app.get("/profile", async (req, res) => {
@@ -45,9 +46,9 @@ app.get("/profile", async (req, res) => {
 //multer
 
 app.post("/posts", [authMiddleware, upload.single("image")], postCtrl.create);
-app.post("/posts/:postId/like", authMiddleware, postCtrl.like);
 app.get("/posts", authMiddleware, postCtrl.getAll);
-
+app.delete("/posts/:postId", authMiddleware, postCtrl.deletePost);
+app.post("/posts/:postId/like", authMiddleware, postCtrl.like);
 app.post("/comments", authMiddleware, commentCtrl.create);
 
 app.listen(3001, () => console.log(`Server running on port 3001`));

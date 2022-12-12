@@ -6,9 +6,9 @@ import { UserProvider } from "./context";
 //import App from "./App";
 import "./index.css";
 import { Home } from "./pages/Home";
+import { Profile } from "./pages/Profile";
 import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
-//import { Profile } from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -23,12 +23,10 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <SignUp />,
   },
-  /*
   {
     path: "/profile",
     element: <Profile />,
   },
-*/
   {
     path: "/logout",
     element: <Home />,

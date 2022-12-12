@@ -2,8 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 /*
-  <i class="fa-solid fa-message"></i>
-        <i class="fa-solid fa-bell"></i>
+  <i className="fa-solid fa-message"></i>
+        <i className="fa-solid fa-bell"></i>
         */
 
 export const Header = () => {
@@ -27,9 +27,9 @@ export const Header = () => {
       <div className="flex gap-9">
         <span>Time Line</span>
 
-        <i class="fa-regular fa-user"></i>
+        <i className="fa-regular fa-user"></i>
 
-        <i class="fa-solid fa-image"></i>
+        <i className="fa-solid fa-image"></i>
         <span>
           <a href="#" onClick={() => logOut()}>
             Logout

@@ -89,9 +89,28 @@ export const me = async (req, res) => {
 
     delete user.password;
 
-    res.status(200).json(user);
+    const user2 = {
+      email: user.email,
+      ...user.profile,
+    };
+
+    res.status(200).json({ ...user2 });
   } catch (ex) {
     console.log({ ex: ex.message });
     res.status(400).json({ error: ex.message });
+  }
+};
+
+export const remove = async (req, res) => {
+  try {
+    await prisma.user.delete({
+      where: {
+        id: req.user.userId,
+      },
+    });
+
+    res.status(200).json({ message: "User has been deleted" });
+  } catch (ex) {
+    res.status(400).json({ error: ex });
   }
 };

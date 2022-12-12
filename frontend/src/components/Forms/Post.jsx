@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 const Post = ({ submit }) => {
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
+
   const uploadRef = useRef();
 
   const filePicker = () => {
@@ -23,7 +24,7 @@ const Post = ({ submit }) => {
     }
 
     const success = await submit({ image, content });
-
+    console.log({ success });
     if (success) {
       setContent(""); //delete text area content
       setImage(null); //delete selected image
@@ -49,13 +50,14 @@ const Post = ({ submit }) => {
       )}
       <form onSubmit={handleSubmit}>
         <textarea
+          value={content}
           onChange={(e) => setContent(e.target.value)}
           cols="30"
           rows="3"
-          value={content}
           placeholder="Add your comment..."
           className="w-full p-5"
         />
+
         <div className="flex justify-start items-center gap-6">
           <input
             ref={uploadRef}
@@ -66,8 +68,8 @@ const Post = ({ submit }) => {
             className="hidden"
             onChange={handleUpload}
           />
-          <button onClick={filePicker} className=" p-2">
-            <i class="fa-regular fa-image"></i>
+          <button type="button" onClick={filePicker} className=" p-2">
+            <i className="fa-regular fa-image"></i>
           </button>
 
           <button className="bg-blue-500 p-2 block text-white w-full border-spacing-1">

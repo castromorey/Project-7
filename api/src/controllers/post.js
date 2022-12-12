@@ -17,6 +17,11 @@ export const create = async (req, res) => {
       },
       include: {
         comments: true,
+        user: {
+          include: {
+            profile: true,
+          },
+        },
         _count: {
           select: { likes: true },
         },
@@ -40,7 +45,20 @@ export const getAll = async (req, res) => {
         },
       ],
       include: {
-        comments: true,
+        comments: {
+          include: {
+            user: {
+              include: {
+                profile: true,
+              },
+            },
+          },
+        },
+        user: {
+          include: {
+            profile: true,
+          },
+        },
         _count: {
           select: { likes: true },
         },
@@ -79,5 +97,33 @@ export const like = async (req, res) => {
   } catch (ex) {
     console.log({ ex: ex.message });
     res.status(400).json({ error: ex.message });
+  }
+};
+
+export const deletePost = async (req, res) => {
+  try {
+    await prisma.post.delete({
+      where: {
+        id: Number(req.params.postId),
+      },
+    });
+
+    res.status(200).json({ message: "Post has been deleted" });
+  } catch (ex) {
+    res.status(400).json({ error: ex });
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  try {
+    await prisma.user.delete({
+      where: {
+        id: Number(req.params.userId),
+      },
+    });
+
+    res.status(200).json({ message: "User has been deleted" });
+  } catch (ex) {
+    res.status(400).json({ error: ex });
   }
 };

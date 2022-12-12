@@ -112,6 +112,28 @@ export const Home = () => {
     }
   };
 
+  const deletePost = async (postId) => {
+    try {
+      const res = await axios.delete(`${API_ROOT}/posts/${postId}`, {
+        headers: {
+          Authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      setPosts((prev) => {
+        return prev.filter((p) => p.id !== postId);
+      }); //add post ti the list
+
+      console.log(res);
+
+      return true;
+    } catch (ex) {
+      // setError(ex.response.data.error);
+      console.log({ ex });
+      return false;
+    }
+  };
+
   console.log({ posts });
 
   if (!user.token) {
@@ -139,6 +161,7 @@ export const Home = () => {
             posts={posts}
             submitComment={submitComment}
             submitLike={submitLike}
+            deletePost={deletePost}
           />
         </div>
       </div>

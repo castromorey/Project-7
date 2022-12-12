@@ -2,8 +2,18 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import iconb from "../assets/images/iconb.png";
 import { UserContext } from "../context";
-
+//
+import { useState } from "react";
+import { useRef } from "react";
+import c from "../assets/images/c.png";
+//
 export const Header = () => {
+  //
+  const [open, setOpen] = useState(false);
+  const Menus = ["Delete user"];
+  const menuRef = useRef();
+  const imgRef = useRef();
+  //
   const { user, setUser } = useContext(UserContext);
 
   console.log({ user });
@@ -16,19 +26,16 @@ export const Header = () => {
   return (
     <div className="bg-slate-300 flex justify-between items-center  p-5">
       <div>
-        <img src={iconb} alt="Logo" width={110} />
+        <img
+          src={iconb}
+          alt="Logo"
+          width={150}
+          className="h-[24px] object-cover"
+        />
       </div>
-      <form className="w-80">
-        <label>
-          <input
-            type="search"
-            placeholder="Search..."
-            className="w-full border-0 rounded-md p-1"
-          />
-        </label>
-      </form>
+
       <nav>
-        <ul className="flex gap-8">
+        <ul className="flex gap-8 items-center">
           {!user.token ? (
             <>
               <li>
@@ -39,12 +46,27 @@ export const Header = () => {
               </li>
             </>
           ) : (
-            <li className="flex gap-16">
-              Hello, {user.firstName} {user.lastName}
-              <button onClick={handleLogout} className="text-blue-600">
-                Sign Out{" "}
-              </button>
-            </li>
+            <>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link
+                  to="/profile"
+                  className="flex justify-between items-center"
+                >
+                  <span className="mr-3 flex items-center font-bold justify-center w-10 h-10 rounded-full border border-green-600 bg-green-300">
+                    {user.firstName.charAt(0)}
+                  </span>{" "}
+                  {user.firstName} {user.lastName}
+                </Link>
+              </li>
+              <li>
+                <button onClick={handleLogout} className="text-blue-600">
+                  Sign Out{" "}
+                </button>
+              </li>
+            </>
           )}
         </ul>
       </nav>
