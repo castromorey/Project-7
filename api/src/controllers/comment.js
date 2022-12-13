@@ -1,16 +1,7 @@
 import prisma from "../lib/prisma.js";
-/*
-const dateFormatter = new Intl.DateTimeFormat(undefined, {
-  dateStyle: "medium",
-  timeStyle: "short",
-});
-<>
-  {user.firstName}
-  {dateFormatter.format(date.parse(createdAT))}
-</>;*/
 
 export const create = async (req, res) => {
-  const { message, postId } = req.body; //, createdAT
+  const { message, postId } = req.body;
   try {
     if (!message && !postId) throw Error("Not content or image provided");
 
@@ -34,11 +25,8 @@ export const create = async (req, res) => {
       },
     });
 
-    //post.image = `http://localhost:3000/uploads/${post.image}`;
-
     res.status(201).json(comment);
   } catch (ex) {
-    console.log({ ex: ex.message });
     res.status(400).json({ error: ex.message });
   }
 };

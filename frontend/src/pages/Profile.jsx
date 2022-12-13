@@ -10,10 +10,9 @@ export const Profile = () => {
 
   const navigate = useNavigate();
 
-  //delete account
+  //delete user account
   const deleteUser = async () => {
-    //alert("Do you really want to delete your account?");
-    const accepted = confirm("Are you you want to delete your account?");
+    const accepted = confirm("Are you sure you want to delete your account?");
     if (!accepted) return;
 
     try {
@@ -30,7 +29,6 @@ export const Profile = () => {
 
       console.log({ res });
     } catch (ex) {
-      // setError(ex.response.data.error);
       console.log({ ex });
     }
   };
@@ -38,10 +36,7 @@ export const Profile = () => {
   return (
     <Layout>
       <div className="flex justify-center py-16">
-        <form
-          //onSubmit={handleSubmit}
-          className="flex flex-col  p-12 gap-7 bg-blue-500 w-96 max-h-98"
-        >
+        <form className="flex flex-col  p-12 gap-7 bg-blue-500 w-96 max-h-98">
           <div className=" flex justify-center text-3xl text-red-600">
             <h2>User Profile</h2>
           </div>

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { API_ROOT, UPLOADS_ROOT } from "../config";
-//import { Layout } from "../components/Layout3";
 import { Layout } from "../components/Layout";
 import { Link, useNavigate } from "react-router-dom";
 import { PostForm } from "../components/Forms";
@@ -11,8 +10,6 @@ import { UserContext } from "../context";
 export const Home = () => {
   const [posts, setPosts] = useState([]);
   const { user } = useContext(UserContext);
-
-  // Context API
 
   useEffect(() => {
     if (!localStorage.getItem("token")) return;
@@ -28,9 +25,7 @@ export const Home = () => {
         },
       });
       setPosts(res.data);
-      console.log(res);
     } catch (ex) {
-      // setError(ex.response.data.error);
       console.log({ ex });
     }
   };
@@ -43,12 +38,10 @@ export const Home = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      setPosts([res.data, ...posts]); //add post ti the list
-      console.log(res);
+      setPosts([res.data, ...posts]); //add post to the list
 
       return true;
     } catch (ex) {
-      // setError(ex.response.data.error);
       console.log({ ex });
       return false;
     }
@@ -72,12 +65,10 @@ export const Home = () => {
             return p;
           }
         });
-      }); //add post to the list
-      console.log(res);
+      });
 
       return true;
     } catch (ex) {
-      // setError(ex.response.data.error);
       console.log({ ex });
       return false;
     }
@@ -102,7 +93,6 @@ export const Home = () => {
           }
         });
       }); //add post ti the list
-      console.log(res);
 
       return true;
     } catch (ex) {
@@ -128,13 +118,10 @@ export const Home = () => {
 
       return true;
     } catch (ex) {
-      // setError(ex.response.data.error);
       console.log({ ex });
       return false;
     }
   };
-
-  console.log({ posts });
 
   if (!user.token) {
     return (

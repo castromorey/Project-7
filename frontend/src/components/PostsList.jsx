@@ -6,15 +6,12 @@ import TimeAgo from "react-timeago";
 const PostsList = ({ posts, submitComment, submitLike, deletePost }) => {
   const { user } = useContext(UserContext);
 
-  //added
   const [comment, setComment] = useState({});
 
   const handleComment = async (e) => {
     e.preventDefault();
-    console.log({ comment });
 
     if (!comment.message) {
-      console.log(comment.message);
       return;
     }
 

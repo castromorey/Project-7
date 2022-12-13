@@ -30,13 +30,11 @@ export const create = async (req, res) => {
 
     res.status(201).json(post);
   } catch (ex) {
-    console.log({ ex: ex.message });
     res.status(400).json({ error: ex.message });
   }
 };
 
 export const getAll = async (req, res) => {
-  //   console.log({ test: req.user });
   try {
     const posts = await prisma.post.findMany({
       orderBy: [
@@ -67,7 +65,6 @@ export const getAll = async (req, res) => {
 
     res.status(200).json(posts);
   } catch (ex) {
-    console.log({ ex: ex.message });
     res.status(400).json({ error: ex.message });
   }
 };
@@ -95,7 +92,6 @@ export const like = async (req, res) => {
 
     res.status(201).json(liked);
   } catch (ex) {
-    console.log({ ex: ex.message });
     res.status(400).json({ error: ex.message });
   }
 };

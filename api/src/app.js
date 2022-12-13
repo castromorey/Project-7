@@ -14,7 +14,6 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//adding multer to the api
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads");
@@ -42,8 +41,6 @@ app.get("/profile", async (req, res) => {
   const allUsers = await prisma.user.findMany();
   res.json(allUsers);
 });
-
-//multer
 
 app.post("/posts", [authMiddleware, upload.single("image")], postCtrl.create);
 app.get("/posts", authMiddleware, postCtrl.getAll);

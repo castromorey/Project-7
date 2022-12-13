@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "../components/Layout2";
+import { Layout } from "../components/Layout";
 import logo from "../assets/images/signup.png";
 import axios from "axios";
 import { API_ROOT } from "../config";
@@ -12,11 +12,9 @@ export const SignUp = () => {
   const [error, setError] = useState("");
 
   const submit = async (data) => {
-    console.log({ data });
-
     try {
       const res = await axios.post(`${API_ROOT}/users/signup`, data);
-      console.log(res);
+
       if (res.status === 201) navigate("/signin");
     } catch (ex) {
       setError(ex.response.data.error);

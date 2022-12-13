@@ -18,16 +18,14 @@ const Post = ({ submit }) => {
     e.preventDefault();
 
     if (!content && !image) {
-      console.log({ content, image });
-
       return;
     }
 
     const success = await submit({ image, content });
-    console.log({ success });
+
     if (success) {
-      setContent(""); //delete text area content
-      setImage(null); //delete selected image
+      setContent("");
+      setImage(null);
     }
   };
 

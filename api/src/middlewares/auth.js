@@ -10,8 +10,6 @@ export const authMiddleware = (req, res, next) => {
 
     req.user = { userId: decoded.userId };
 
-    // console.log({ token, decoded, user: req.user });
-
     next();
   } catch (ex) {
     res.status(401).json({ message: ex.message });

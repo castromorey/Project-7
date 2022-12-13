@@ -50,7 +50,7 @@ const SignUp = ({ submit }) => {
           className="w-full border-0 rounded-md p-1"
         />
         {formErrors.email && (
-          <div className="text-red-500">{formErrors.email}</div>
+          <div className="text-red-500">{formErrors.firstName}</div>
         )}
       </label>
 
@@ -64,7 +64,7 @@ const SignUp = ({ submit }) => {
           className="w-full border-0 rounded-md p-1"
         />
         {formErrors.email && (
-          <div className="text-red-500">{formErrors.email}</div>
+          <div className="text-red-500">{formErrors.lastName}</div>
         )}
       </label>
 

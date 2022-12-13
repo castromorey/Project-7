@@ -29,7 +29,6 @@ export const signup = async (req, res) => {
 
     res.status(201).json({ message: "User created successfully" });
   } catch (ex) {
-    //console.log({ ex: ex.message });
     res.status(400).json({ error: ex.message });
   }
 };
@@ -69,13 +68,11 @@ export const signin = async (req, res) => {
 
     res.status(201).json({ token, ...user2 });
   } catch (ex) {
-    console.log({ ex: ex.message });
     res.status(400).json({ error: ex.message });
   }
 };
 
 export const me = async (req, res) => {
-  // console.log({ test: req.user });
   try {
     const user = await prisma.user.findUnique({
       where: { id: req.user.userId },
@@ -96,7 +93,6 @@ export const me = async (req, res) => {
 
     res.status(200).json({ ...user2 });
   } catch (ex) {
-    console.log({ ex: ex.message });
     res.status(400).json({ error: ex.message });
   }
 };
