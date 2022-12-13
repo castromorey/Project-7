@@ -29,7 +29,7 @@ export const signup = async (req, res) => {
 
     res.status(201).json({ message: "User created successfully" });
   } catch (ex) {
-    console.log({ ex: ex.message });
+    //console.log({ ex: ex.message });
     res.status(400).json({ error: ex.message });
   }
 };
@@ -39,7 +39,6 @@ export const signin = async (req, res) => {
 
   try {
     if (!email || !password) throw Error("Not email and/or password provided");
-    //if (exists) throw Error("User not found");
 
     const user = await prisma.user.findUnique({
       where: { email },

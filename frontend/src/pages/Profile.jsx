@@ -10,8 +10,11 @@ export const Profile = () => {
 
   const navigate = useNavigate();
 
+  //delete account
   const deleteUser = async () => {
-    alert("Do you really want to delete your account?");
+    //alert("Do you really want to delete your account?");
+    const accepted = confirm("Are you you want to delete your account?");
+    if (!accepted) return;
 
     try {
       const res = await axios.delete(`${API_ROOT}/users`, {
@@ -39,7 +42,7 @@ export const Profile = () => {
           //onSubmit={handleSubmit}
           className="flex flex-col  p-12 gap-7 bg-blue-500 w-96 max-h-98"
         >
-          <div className=" flex justify-center text-3xl text-white">
+          <div className=" flex justify-center text-3xl text-red-600">
             <h2>User Profile</h2>
           </div>
 
@@ -90,7 +93,7 @@ export const Profile = () => {
           <button
             type="button"
             onClick={deleteUser}
-            className=" w-full border-0 rounded-md p-1 bg-blue-300"
+            className=" w-full border-0 rounded-md p-1 bg-blue-300 text-red-600"
           >
             Delete account
           </button>

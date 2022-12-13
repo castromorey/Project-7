@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Layout } from "../components/Layout2";
-//import { Layout } from "../components/Layout3";
 import signup from "../assets/images/signup.png";
 import { SignInForm } from "../components/Forms";
 import { API_ROOT } from "../config";
@@ -39,6 +38,12 @@ export const SignIn = () => {
         <div className="flex justify-center">
           <SignInForm submit={submit} />
         </div>
+
+        {error && (
+          <div className=" flex justify-center text-red-700  p-1 max-w-1xl">
+            {error}
+          </div>
+        )}
       </main>
     </Layout>
   );

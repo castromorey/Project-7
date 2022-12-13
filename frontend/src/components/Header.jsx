@@ -2,18 +2,17 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import iconb from "../assets/images/iconb.png";
 import { UserContext } from "../context";
-//
+
 import { useState } from "react";
 import { useRef } from "react";
 import c from "../assets/images/c.png";
-//
+
 export const Header = () => {
-  //
-  const [open, setOpen] = useState(false);
+  /*const [open, setOpen] = useState(false);
   const Menus = ["Delete user"];
   const menuRef = useRef();
   const imgRef = useRef();
-  //
+  */
   const { user, setUser } = useContext(UserContext);
 
   console.log({ user });

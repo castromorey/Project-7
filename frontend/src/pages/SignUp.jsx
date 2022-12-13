@@ -20,7 +20,6 @@ export const SignUp = () => {
       if (res.status === 201) navigate("/signin");
     } catch (ex) {
       setError(ex.response.data.error);
-      //console.log({ ex });
     }
   };
 
@@ -28,7 +27,7 @@ export const SignUp = () => {
     <Layout>
       <main className="flex-col">
         <div className="flex justify-center">
-          <img src={logo} alt="picture" width={350} />
+          <img src={logo} alt="picture" width={250} />
         </div>
         <div className="flex justify-center">
           <SignUpForm submit={submit} />
